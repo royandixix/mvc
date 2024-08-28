@@ -22,7 +22,10 @@ class About extends Controller
         // echo 'About/page';
         $data ['judul'] = 'Pages';
         $this->view('templates/header', $data);
-        $this->view('about/page');
+        $this->view('about/page'); 
         $this->view('templates/footer');
+
+        
     }
+    
 }
