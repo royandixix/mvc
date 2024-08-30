@@ -25,9 +25,7 @@
                     <a class="nav-link" href="<?php echo BASEURL; ?>/about">About</a>
                     <a class="nav-link" href="<?php echo BASEURL; ?>/page">Page</a>
                     <a class="nav-link" href="<?php echo BASEURL; ?>/web">Web Development</a>
-
-                   
-                    
+   
                 </div>
             </div>
         </div>
