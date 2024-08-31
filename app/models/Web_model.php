@@ -21,7 +21,23 @@ class Web_model
         $this->db->bind(':id', $id);
         return $this->db->single();
     }
-    
-    
+
+    public function tambahWeb($data)
+    {
+        $query = "INSERT INTO web
+                VALUES
+                ('', :nama, :jabatan, :pengalaman, :umur, :alamat, :kampus, :asal_daerah)";
+
+            $this->db->query($query);
+            $this->db->bind('nama', $data['nama']);
+            $this->db->bind('jabatan', $data['jabatan']);
+            $this->db->bind('pengalaman', $data['pengalaman']);
+            $this->db->bind('umur', $data['umur']);
+            $this->db->bind('alamat', $data['alamat']);
+            $this->db->bind('kampus', $data['kampus']);
+            $this->db->bind('asal_daerah', $data['asal_daerah']);
+
+            $this->db->execute();
+            return $this->db->rowCant();
+    }
 }
-?>
