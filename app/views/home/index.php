@@ -6,7 +6,7 @@
         <p class="lead">Halo nama Perkenalkan nama saya <?php echo $data['nama']; ?></p>
         <hr class="my-4">
         <p>Di sini saya belajar tentang Model-View-Controller (MVC)</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Pelajari Lebih Lanjut</a>
+        <a class="btn btn-primary btn-lg" href="https://www.biznetgio.com/news/apa-itu-mvc?gad_source=1" role="button">Pelajari Lebih Lanjut</a>
     </div>
 
 
