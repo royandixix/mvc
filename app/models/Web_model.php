@@ -28,16 +28,26 @@ class Web_model
                 VALUES
                 ('', :nama, :jabatan, :pengalaman, :umur, :alamat, :kampus, :asal_daerah)";
 
-            $this->db->query($query);
-            $this->db->bind('nama', $data['nama']);
-            $this->db->bind('jabatan', $data['jabatan']);
-            $this->db->bind('pengalaman', $data['pengalaman']);
-            $this->db->bind('umur', $data['umur']);
-            $this->db->bind('alamat', $data['alamat']);
-            $this->db->bind('kampus', $data['kampus']);
-            $this->db->bind('asal_daerah', $data['asal_daerah']);
+        $this->db->query($query);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('jabatan', $data['jabatan']);
+        $this->db->bind('pengalaman', $data['pengalaman']);
+        $this->db->bind('umur', $data['umur']);
+        $this->db->bind('alamat', $data['alamat']);
+        $this->db->bind('kampus', $data['kampus']);
+        $this->db->bind('asal_daerah', $data['asal_daerah']);
 
-            $this->db->execute();
-            return $this->db->rowCant();
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function deleteWeb($id)
+    {
+        $query = "DELETE FROM web WHERE id = :id";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+        $this->db->execute();
+
+        return $this->db->rowCount(); // Mengembalikan jumlah baris yang terpengaruh
     }
 }
