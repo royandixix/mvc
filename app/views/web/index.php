@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="col-6">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+            <button type="button" class="btn btn-primary tombolTambahData" data-bs-toggle="modal" data-bs-target="#formModal">
                 Tambah Pengguna Baru
             </button>
             <br><br>
@@ -20,11 +20,14 @@
                 <?php foreach ($data['web'] as $w) : ?>
                     <li class="list-group-item">
                         <?php echo htmlspecialchars($w['nama']); ?>
-                        <a href="<?php echo BASEURL; ?>/web/delete/<?php echo $w['id']; ?>" 
-                           class="badge text-bg-danger p-2 rounded-3 float-end" 
-                           onclick="return confirm('Yakin ingin menghapus pengguna ini?')">Delete</a>
-                        <a href="<?php echo BASEURL; ?>/web/detail/<?php echo $w['id']; ?>" 
-                           class="badge text-bg-primary p-2 rounded-3 float-end me-2">Detail</a>
+
+                        <a href="<?php echo BASEURL; ?>/web/delete/<?php echo $w['id']; ?>"
+                            class="badge text-bg-danger p-2 rounded-3 float-end"
+                            onclick="return confirm('Yakin ingin menghapus pengguna ini?')">Delete</a>
+                        <a href="<?php echo BASEURL; ?>/web/edit/<?php echo $w['id']; ?>"
+                            class="badge text-bg-success mx-3 p-2 rounded-3 float-end me-2 tampilModalEdit" data-id="<?php echo $w['id']; ?>" data-bs-toggle="modal" data-bs-target="#formModal"data-id="<?php echo$w['id']; ?>">Edit</a>
+                        <a href="<?php echo BASEURL; ?>/web/detail/<?php echo $w['id']; ?>"
+                            class="badge text-bg-primary p-2 rounded-3 float-end me-2">Detail</a>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -33,7 +36,7 @@
     </div>
 </div>
 
-<!-- Modal Tambah Pengguna -->
+<!-- Modal Tambah/Edit Pengguna -->
 <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -41,8 +44,10 @@
                 <h1 class="modal-title fs-5" id="judulModal">Tambah Pengguna Baru</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body ">
+
                 <form action="<?php echo BASEURL; ?>/web/tambah" method="post">
+                    <input type="hidden" name="id" id="id">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
                         <input type="text" class="form-control" id="nama" name="nama" required>

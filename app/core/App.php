@@ -1,4 +1,4 @@
-<?php   
+<?php
 
 class App
 {
@@ -8,7 +8,8 @@ class App
     public function __construct()
     {
         $url = $this->parseURL();
-        // var_dump($url);
+
+        // Set controller
         if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
             unset($url[0]);
@@ -16,21 +17,21 @@ class App
         require_once '../app/controllers/' . $this->controller . '.php';
         $this->controller = new $this->controller;
 
+        // Set method
         if (isset($url[1])) {
             if (method_exists($this->controller, $url[1])) {
                 $this->method = $url[1];
                 unset($url[1]);
             }
         }
-        // params
+
+        // Set params
         if (!empty($url)) {
             $this->params = array_values($url);
-            var_dump($url);
         }
 
-        // jalankan controller dan metod serta kirimkan params jika ada 
+        // Call the method with params if available
         call_user_func_array([$this->controller, $this->method], $this->params);
-        
     }
 
     public function parseURL()
