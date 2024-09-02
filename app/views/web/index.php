@@ -7,31 +7,39 @@
         </div>
     </div>
 
+    <!-- Tombol Tambah Pengguna Baru -->
     <div class="row">
-        <div class="col-6">
-            <button type="button" class="btn btn-primary tombolTambahData" data-bs-toggle="modal" data-bs-target="#formModal">
+        <div class="col-lg-6">
+            <button type="button" class="btn btn-primary mt-3 tombolTambahData" data-bs-toggle="modal" data-bs-target="#formModal">
                 Tambah Pengguna Baru
             </button>
-            <br><br>
+        </div>
+    </div>
 
-            <h5>Daftar Web Development</h5>
+    <!-- Form Pencarian -->
+    <div class="row mt-3">
+        <div class="col-6">
+            <form action="<?php echo BASEURL; ?>/web/cari" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="keyword" placeholder="cari" >
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>
+                </div>
+            </form>
 
+            <!-- Daftar Web Development -->
+            <h5 class="mt-3">Daftar Web Development</h5>
             <ul class="list-group">
                 <?php foreach ($data['web'] as $w) : ?>
                     <li class="list-group-item">
                         <?php echo htmlspecialchars($w['nama']); ?>
 
-                        <a href="<?php echo BASEURL; ?>/web/delete/<?php echo $w['id']; ?>"
-                            class="badge text-bg-danger p-2 rounded-3 float-end"
-                            onclick="return confirm('Yakin ingin menghapus pengguna ini?')">Delete</a>
-                        <a href="<?php echo BASEURL; ?>/web/edit/<?php echo $w['id']; ?>"
-                            class="badge text-bg-success mx-3 p-2 rounded-3 float-end me-2 tampilModalEdit" data-id="<?php echo $w['id']; ?>" data-bs-toggle="modal" data-bs-target="#formModal"data-id="<?php echo$w['id']; ?>">Edit</a>
-                        <a href="<?php echo BASEURL; ?>/web/detail/<?php echo $w['id']; ?>"
-                            class="badge text-bg-primary p-2 rounded-3 float-end me-2">Detail</a>
+                        <!-- Tombol Aksi: Delete, Edit, Detail -->
+                        <a href="<?php echo BASEURL; ?>/web/delete/<?php echo $w['id']; ?>" class="badge text-bg-danger p-2 rounded-3 float-end" onclick="return confirm('Yakin ingin menghapus pengguna ini?')">Delete</a>
+                        <a href="<?php echo BASEURL; ?>/web/edit/<?php echo $w['id']; ?>" class="badge text-bg-success mx-3 p-2 rounded-3 float-end me-2 tampilModalEdit" data-id="<?php echo $w['id']; ?>" data-bs-toggle="modal" data-bs-target="#formModal">Edit</a>
+                        <a href="<?php echo BASEURL; ?>/web/detail/<?php echo $w['id']; ?>" class="badge text-bg-primary p-2 rounded-3 float-end me-2">Detail</a>
                     </li>
                 <?php endforeach; ?>
             </ul>
-
         </div>
     </div>
 </div>
@@ -44,10 +52,11 @@
                 <h1 class="modal-title fs-5" id="judulModal">Tambah Pengguna Baru</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body ">
-
+            <div class="modal-body">
                 <form action="<?php echo BASEURL; ?>/web/tambah" method="post">
                     <input type="hidden" name="id" id="id">
+
+                    <!-- Form Input Pengguna -->
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
                         <input type="text" class="form-control" id="nama" name="nama" required>

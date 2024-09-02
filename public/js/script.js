@@ -3,7 +3,7 @@ $(document).ready(function () {
     $(".tombolTambahData").on("click", function () {
       $("#judulModal").html("Tambah Data");
       $(".modal-footer button[type=submit]").html("Tambah");
-      $(".modal-body form ").attr('action', 'http://localhost/mvc/public/web/tambah'); // URL untuk menambah data
+      $(".modal-body form ").attr('action', 'http://localhost/mvc/public/web/tambah '); // URL untuk menambah data
     });
   
     // Modal Edit Data

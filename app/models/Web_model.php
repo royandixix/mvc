@@ -68,7 +68,7 @@ class Web_model
         $this->db->query($query);
 
         // Mengikat data
-        
+
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('jabatan', $data['jabatan']);
         $this->db->bind('pengalaman', $data['pengalaman']);
@@ -82,5 +82,17 @@ class Web_model
 
         // Mengembalikan jumlah baris yang terpengaruh
         return $this;
+    }
+
+    public function cariDataWeb()
+    {
+        // Mengecek apakah 'keyword' ada dalam array POST
+        $keyword = isset($_POST['keyword']) ? $_POST['keyword'] :'';
+
+        $query = "SELECT * FROM web WHERE nama LIKE :keyword";
+        $this->db->query($query);
+        $this->db->bind(':keyword', "%$keyword%");
+
+        return $this->db->resultSet();
     }
 }

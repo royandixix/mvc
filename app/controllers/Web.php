@@ -78,4 +78,15 @@ class web extends Controller
             exit;
         }
     }
+
+    public function cari()
+    {
+        $data['judul'] = 'Daftar Web Develotmend';
+        $data['web'] = $this->model('Web_model')->cariDataWeb();
+        $this->view('templates/header', $data);
+        $this->view('web/index', $data);
+        $this->view('templates/footer');
+    }
+    
+
 }
